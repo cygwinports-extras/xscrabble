@@ -1,0 +1,74 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' xscrabble-2.10-orig/build xscrabble-2.10/build
+--- xscrabble-2.10-orig/build	2000-08-11 16:07:31.000000000 -0500
++++ xscrabble-2.10/build	2006-05-07 19:32:20.355375000 -0500
+@@ -1,9 +1,10 @@
+ #!/bin/sh
+ 
+ # Install defaults
+-APPDEFAULTS=/usr/lib/X11/app-defaults
+-BINDIR=/usr/games/bin
+-LIBDIR=/usr/games/lib/scrabble
++APPDEFAULTS=$DESTDIR/etc/X11/app-defaults
++REAL_APPDEFAULTS=/etc/X11/app-defaults
++BINDIR=$DESTDIR/usr/bin
++LIBDIR=$DESTDIR/usr/share/games/xscrabble
+ 
+ # Version (don't modify without knowing!!)
+ MAJOR=2
+@@ -52,7 +53,8 @@
+ fi
+ 
+ if test "$1" = "install" ; then
+-  mkdirhier $BINDIR
++  mkdir -p $BINDIR
++  mkdir -p $APPDEFAULTS
+   echo "mkdirhier $BINDIR"
+   install -c -s src/xscrab $BINDIR
+   echo "install -c -s src/xscrab $BINDIR"
+@@ -79,7 +81,7 @@
+      exit
+   fi
+   echo "Installing language ($en) dictionary and related files..."
+-  mkdirhier $LIBDIR
++  mkdir -p $LIBDIR
+   tar xvfz ../xscrabble_$2.tgz 
+   echo ""
+   rm -rf $LIBDIR/$2
+@@ -90,8 +92,8 @@
+   echo "mv -f xscrabble_$2/app-defaults/XScrabble_$2 $APPDEFAULTS"
+   rm -f $APPDEFAULTS/XScrabble
+   echo "rm -f $APPDEFAULTS/XScrabble"
+-  ln -fs $APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble
+-  echo "ln -fs $APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble"
++  ln -fs $REAL_APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble
++  echo "ln -fs $REAL_APPDEFAULTS/XScrabble_$2 $APPDEFAULTS/XScrabble"
+   chmod a+rwx $LIBDIR/$2 
+   chmod a+rw $LIBDIR/$2/scrabble_scores
+   rm -rf xscrabble_$2
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' xscrabble-2.10-orig/src/Imakefile xscrabble-2.10/src/Imakefile
+--- xscrabble-2.10-orig/src/Imakefile	1998-02-27 01:53:01.000000000 -0600
++++ xscrabble-2.10/src/Imakefile	2005-05-18 19:34:26.000000000 -0500
+@@ -23,9 +23,9 @@
+          OBJS = init.o xinit.o misc.o moves.o cmove.o main.o xutils.o mess.o \
+ 	 	popup.o widgets.o display.o user.o CircPerc.o
+ 
+-   LOCAL_LIBS = XawClientLibs 
+-      DEPLIBS = XawClientDepLibs
+-     PROGRAMS = xscrab xscrabble
++   LOCAL_LIBS = 
++      DEPLIBS = XawClientLibs XawClientDepLibs
++     PROGRAMS = xscrab.exe xscrabble.exe
+         SLIBS = 
+ 
+      INCLUDES = -I..
+@@ -35,8 +35,8 @@
+ 
+ AllTarget($(PROGRAMS))
+ 
+-NormalProgramTarget(xscrab,$(OBJS),$(DEPLIBS),$(LOCAL_LIBS),$(SLIBS))
+-NormalProgramTarget(xscrabble,$(SETUP_OBJS),$(DEPLIBS),$(LOCAL_LIBS),$(SLIBS))
++NormalProgramTarget(xscrab,$(OBJS),$(LOCAL_LIBS),$(SLIBS),$(DEPLIBS))
++NormalProgramTarget(xscrabble,$(SETUP_OBJS),$(LOCAL_LIBS),$(SLIBS),$(DEPLIBS))
+ 
+ DependTarget()
+ 

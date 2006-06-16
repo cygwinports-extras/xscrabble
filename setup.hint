@@ -1,0 +1,4 @@
+category: Games
+requires: cygwin libX11_6 libXaw8
+sdesc: "X11 version of Scrabble(TM) board game"
+ldesc: "X11 version of the popular board game, for 1 to 4 players."

@@ -1,0 +1,37 @@
+DESCRIPTION="X11 Scrabble game"
+HOMEPAGE="http://freshmeat.net/projects/xscrabble/"
+SRC_URI="ftp://ftp.ac-grenoble.fr/ge/educational_games/${P}.tgz"
+
+src_compile() {
+	lndirs
+
+	cd ${T}
+	fetch ${SRC_URI%/*}/${PN}_en.tgz ${SRC_URI%/*}/${PN}_fr.tgz
+	unpack ${PN}_en.tgz ${PN}_fr.tgz
+
+	cd ${B}
+	ln -sf ${T}/${PN}_en.tgz ${T}/${PN}_fr.tgz ..
+
+	./build bin || error "build failed"
+}
+
+src_install() {
+	cd ${B}
+	# order matters here; this makes English the default
+	DESTDIR=${D} ./build install || error
+	DESTDIR=${D} ./build lang fr || error
+	DESTDIR=${D} ./build lang en || error
+
+	for f in ${D}/etc/X11/app-defaults/*
+	do
+		if [ -f ${f} ]
+		then
+			sed -i \
+				-e 's:/usr/games/lib/scrabble/:/usr/share/games/scrabble/:g' \
+				${f} || error "sed ${f} failed"
+		fi
+	done
+
+	doicon ${S}/src/xscrabble.xpm
+	make_desktop_entry xscrabble "Scrabble" xscrabble.xpm "Game;BoardGame"
+}
