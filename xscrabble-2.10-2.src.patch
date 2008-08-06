@@ -1,4 +1,3 @@
-diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' xscrabble-2.10-orig/build xscrabble-2.10/build
 --- xscrabble-2.10-orig/build	2000-08-11 16:07:31.000000000 -0500
 +++ xscrabble-2.10/build	2006-05-07 19:32:20.355375000 -0500
 @@ -1,9 +1,10 @@
@@ -45,7 +44,6 @@ diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depco
    chmod a+rwx $LIBDIR/$2 
    chmod a+rw $LIBDIR/$2/scrabble_scores
    rm -rf xscrabble_$2
-diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' xscrabble-2.10-orig/src/Imakefile xscrabble-2.10/src/Imakefile
 --- xscrabble-2.10-orig/src/Imakefile	1998-02-27 01:53:01.000000000 -0600
 +++ xscrabble-2.10/src/Imakefile	2005-05-18 19:34:26.000000000 -0500
 @@ -23,9 +23,9 @@
