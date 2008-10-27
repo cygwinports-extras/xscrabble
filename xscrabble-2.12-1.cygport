@@ -1,0 +1,36 @@
+DESCRIPTION="X11 Scrabble game"
+HOMEPAGE="ftp://ftp.ac-grenoble.fr/ge/educational_games/"
+SRC_URI="
+	ftp://ftp.ac-grenoble.fr/ge/educational_games/${P}.tar.bz2
+	ftp://ftp.ac-grenoble.fr/ge/educational_games/${PN}_en.tar.bz2
+	ftp://ftp.ac-grenoble.fr/ge/educational_games/${PN}_fr.tar.bz2
+"
+PATCH_URI="2.12-imake.patch"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	./build bin || error "build failed"
+}
+
+src_install() {
+	cd ${B}
+	dobin src/*.exe
+
+	for lang in en fr
+	do
+		insinto /etc/X11/app-defaults
+		doins ${S}/../${PN}_${lang}/app-defaults/XScrabble_${lang}
+
+		insinto /usr/share/xscrabble/${lang}
+		doins ${S}/../${PN}_${lang}/lib/*
+	done
+
+	sed -e 's|/usr/share/games/scrabble/|/usr/share/xscrabble/|g' \
+	    -i ${D}/etc/X11/app-defaults/*
+
+	dosym XScrabble_en /etc/X11/app-defaults/XScrabble
+
+	doicon ${S}/src/xscrabble.xpm
+	make_desktop_entry xscrabble "Scrabble" xscrabble.xpm "Game;BoardGame"
+}

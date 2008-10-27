@@ -3,19 +3,23 @@ xscrabble
 X11 version of the popular board game, for 1 to 4 players.
 
 Runtime requirements:
-  cygwin-1.5.19-4
-  libX11_6-1.0.0-2
-  libXaw8-1.0.1-1
+  cygwin-1.5.25-15
+  libbz2_1-1.0.5-2
+  libX11_6-1.1.5-1
+  libXaw7-1.0.4-2
+  libXpm4-3.5.7-1
+  libXt6-1.0.5-1
+  zlib-1.2.3-2
 
 Build requirements:
-  cygwin-1.5.19-4
-  binutils-20050610-1
-  gcc-core-3.4.4-1
-  imake-1.0.0-1
-  make-3.80-1
+  binutils-20080624-2
+  cygport-0.4.2-1
+  gcc-core-3.4.4-3
+  imake-1.0.2-2
+  make-3.81-1
 
 Canonical homepage:
-  http://freshmeat.net/projects/xscrabble/?topic_id=80
+  ftp://ftp.ac-grenoble.fr/ge/educational_games/
 
 Canonical download:
   ftp://ftp.ac-grenoble.fr/ge/educational_games/
@@ -23,15 +27,15 @@ Canonical download:
 -------------------------------------------
 
 Build instructions:
-  unpack xscrabble-2.10-X-src.tar.bz2
+  unpack xscrabble-2.12-X-src.tar.bz2
     if you use setup to install this src package, it will be
 	 unpacked under /usr/src automatically
   cd /usr/src
-  cygport ./xscrabble-2.10-X.cygport all
+  cygport ./xscrabble-2.12-X.cygport all
 
 This will create:
-  /usr/src/xscrabble-2.10-X-src.tar.bz2
-  /usr/src/xscrabble-2.10-X.tar.bz2
+  /usr/src/xscrabble-2.12-X-src.tar.bz2
+  /usr/src/xscrabble-2.12-X.tar.bz2
 
 -------------------------------------------
 
@@ -43,23 +47,25 @@ Files included in the binary package:
   /usr/bin/xscrab.exe
   /usr/bin/xscrabble.exe
   /usr/share/applications/xscrabble.desktop
-  /usr/share/doc/Cygwin/xscrabble-2.10.README
-  /usr/share/doc/xscrabble-2.10/Changes
-  /usr/share/doc/xscrabble-2.10/LICENSE
-  /usr/share/doc/xscrabble-2.10/README
-  /usr/share/games/xscrabble/en/duplicate
-  /usr/share/games/xscrabble/en/OSPD3.gz
-  /usr/share/games/xscrabble/en/scrabble_rules
-  /usr/share/games/xscrabble/en/scrabble_scores
-  /usr/share/games/xscrabble/fr/duplicate
-  /usr/share/games/xscrabble/fr/ODS2.gz
-  /usr/share/games/xscrabble/fr/scrabble_regles
-  /usr/share/games/xscrabble/fr/scrabble_scores
+  /usr/share/doc/xscrabble-2.12/Changes
+  /usr/share/doc/xscrabble-2.12/LICENSE
+  /usr/share/doc/xscrabble-2.12/README
   /usr/share/pixmaps/xscrabble.xpm
+  /usr/share/xscrabble/en/OSPD3.gz
+  /usr/share/xscrabble/en/duplicate
+  /usr/share/xscrabble/en/scrabble_rules
+  /usr/share/xscrabble/en/scrabble_scores
+  /usr/share/xscrabble/fr/ODS4.gz
+  /usr/share/xscrabble/fr/duplicate
+  /usr/share/xscrabble/fr/scrabble_regles
+  /usr/share/xscrabble/fr/scrabble_scores
 
 ------------------
 
 Port Notes:
+
+----- version 2.12-1 -----
+Version bump.
 
 ----- version 2.10-2 -----
 Rebuilt for modular X11.

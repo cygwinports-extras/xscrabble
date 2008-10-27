@@ -1,0 +1,26 @@
+--- origsrc/xscrabble-2.12/src/Imakefile	2004-12-18 10:59:27.000000000 -0600
++++ src/xscrabble-2.12/src/Imakefile	2008-10-27 01:12:20.673440900 -0500
+@@ -23,9 +23,9 @@
+          OBJS = init.o xinit.o misc.o moves.o cmove.o main.o xutils.o mess.o \
+ 	 	popup.o widgets.o display.o user.o CircPerc.o
+ 
+-   LOCAL_LIBS = XawClientLibs 
+-      DEPLIBS = XawClientDepLibs
+-     PROGRAMS = xscrab xscrabble
++   LOCAL_LIBS = 
++      DEPLIBS = XawClientDepLibs XawClientLibs
++     PROGRAMS = xscrab.exe xscrabble.exe
+ SYS_LIBRARIES = -lXpm -L../Xc -lXc
+    EXTRA_LIBS = -lz -lbz2
+         SLIBS = 
+@@ -35,8 +35,8 @@
+ 
+ AllTarget($(PROGRAMS))
+ 
+-NormalProgramTarget(xscrab,$(OBJS),$(DEPLIBS),$(LOCAL_LIBS),$(EXTRA_LIBS))
+-NormalProgramTarget(xscrabble,$(SETUP_OBJS),$(DEPLIBS),$(LOCAL_LIBS),$(SLIBS))
++NormalProgramTarget(xscrab,$(OBJS),$(LOCAL_LIBS),$(EXTRA_LIBS),$(DEPLIBS))
++NormalProgramTarget(xscrabble,$(SETUP_OBJS),$(LOCAL_LIBS),$(SLIBS),$(DEPLIBS))
+ 
+ DependTarget()
+ 
