@@ -3,13 +3,14 @@ xscrabble
 X11 version of the popular board game, for 1 to 4 players.
 
 Runtime requirements:
-  cygwin-1.5.25-15
-  libbz2_1-1.0.5-2
-  libX11_6-1.1.5-1
-  libXaw7-1.0.4-2
-  libXpm4-3.5.7-1
-  libXt6-1.0.5-1
-  zlib-1.2.3-2
+  cygwin-1.7.0-45
+  libbz2_1-1.0.5-10
+  libgcc1-4.3.2-2
+  libX11_6-1.2-10
+  libXaw7-1.0.4-10
+  libXpm4-3.5.7-10
+  libXt6-1.0.5-10
+  zlib0-1.2.3-10
 
 Build requirements:
   binutils-20080624-2

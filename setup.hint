@@ -1,4 +1,4 @@
 category: Games
-requires: cygwin libbz2_1 libX11_6 libXaw7 libXpm4 libXt6 zlib
+requires: cygwin libbz2_1 libgcc1 libX11_6 libXaw7 libXpm4 libXt6 zlib0
 sdesc: "X11 version of Scrabble(TM) board game"
 ldesc: "X11 version of the popular board game, for 1 to 4 players."
