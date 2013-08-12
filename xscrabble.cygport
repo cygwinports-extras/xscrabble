@@ -1,4 +1,9 @@
-DESCRIPTION="X11 Scrabble game"
+NAME="xscrabble"
+VERSION=2.12
+RELEASE=10
+CATEGORY="Games"
+SUMMARY="X11 Scrabble game"
+DESCRIPTION="X11 version of the popular board game, for 1 to 4 players."
 HOMEPAGE="ftp://ftp.ac-grenoble.fr/ge/educational_games/"
 SRC_URI="
 	ftp://ftp.ac-grenoble.fr/ge/educational_games/${P}.tar.bz2
